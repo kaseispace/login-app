@@ -3,7 +3,7 @@ const user = useSupabaseUser()
 
 watch(user, async () => {
   if (user.value) {
-    await $fetch('/api/users', {
+    await $fetch('/api/user', {
       method: 'POST',
     })
     return navigateTo('/')
