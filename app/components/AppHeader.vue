@@ -2,29 +2,48 @@
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 
-const avatarUrl = ref<string | undefined>(undefined)
+const mounted = ref(false)
 
-watchEffect(async () => {
+onMounted(() => {
+  mounted.value = true
+})
+
+const { data: profile, refresh } = useFetch('/api/profile', {
+  server: false,
+  immediate: false,
+})
+
+watchEffect(() => {
   if (user.value) {
-    const profile = await $fetch('/api/profile')
-    avatarUrl.value = profile.avatarUrl
+    refresh()
   }
+})
+
+const avatarSrc = computed(() => {
+  // SSR → mounted=false → undefined
+  // CSR 初回 hydration → mounted=false → undefined
+  if (!mounted.value) return undefined
+
+  // hydration 完了後に初めて値を返す
+  return profile.value?.avatarUrl
 })
 
 const logout = async () => {
   await client.auth.signOut()
   navigateTo('/login')
-  avatarUrl.value = undefined
 }
 </script>
 
 <template>
   <UHeader :toggle="false">
     <template #right>
+      <CategoryAddModal v-if="user" />
+
       <UColorModeButton variant="link" />
+
       <UAvatar
         v-if="user"
-        :src="avatarUrl"
+        :src="avatarSrc"
       />
 
       <UButton
