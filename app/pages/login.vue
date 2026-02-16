@@ -2,36 +2,24 @@
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 
-const toast = useToast()
+const providers = [{
+  label: 'Google',
+  icon: 'i-flat-color-icons-google',
+  onClick: async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: 'http://localhost:3000/confirm',
+      },
+    })
+  },
+}]
 
 watchEffect(() => {
   if (user.value) {
     return navigateTo('/')
   }
 })
-
-const providers = [{
-  label: 'Google',
-  icon: 'i-flat-color-icons-google',
-  onClick: async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: 'http://localhost:3000/confirm',
-      },
-    })
-    if (error) displayError(error)
-  },
-}]
-
-const displayError = (error: any) => {
-  toast.add({
-    title: 'Error',
-    description: error.message,
-    icon: 'i-lucide-alert-circle',
-    color: 'error',
-  })
-}
 </script>
 
 <template>
