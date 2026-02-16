@@ -21,6 +21,12 @@ export default withNuxt([
           order: ['script', 'template', 'style'],
         },
       ],
+      'vue/max-attributes-per-line': [
+        'error',
+        {
+          singleline: 3,
+        },
+      ],
     },
   },
 ])
