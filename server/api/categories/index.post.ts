@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
     throw createError({
       statusCode: 401,
       statusMessage: 'Unauthorized',
+      data: { message: 'セッション情報を取得できませんでした。ページを再読み込みしてから、もう一度お試しください。' },
     })
   }
 
