@@ -7,6 +7,13 @@ export default withNuxt([
     ignores: ['node_modules', '.output', 'dist'],
     rules: {
       'no-console': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          caughtErrorsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   {
