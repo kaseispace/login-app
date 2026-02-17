@@ -28,7 +28,6 @@ const onSubmit = async (event: FormSubmitEvent<CreateTask>) => {
     await refresh()
     showSuccess('タスクを追加しました', { progress: false })
     state.content = ''
-    state.categoryId = null
     open.value = false
   }
   catch (err) {
