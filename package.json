@@ -12,6 +12,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@iconify-json/lucide": "^1.2.90",
     "@nuxt/eslint": "^1.13.0",
     "@nuxt/ui": "^4.4.0",
     "@nuxtjs/supabase": "^2.0.3",
