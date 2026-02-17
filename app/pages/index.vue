@@ -3,9 +3,6 @@ const { categoryList } = useCategories()
 </script>
 
 <template>
-  <!-- <div>
-    Hello
-  </div> -->
   <UPageGrid v-if="categoryList" class="items-start">
     <UCard v-for="category in categoryList" :key="category.id">
       <div class="relative flex items-center justify-center">
