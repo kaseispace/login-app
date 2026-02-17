@@ -57,7 +57,7 @@ export type CreateCategory = z.infer<typeof createCategorySchema>
 
 export const createTaskSchema = z.object({
   content: z.string().min(1, '内容を入力してください'),
-  categoryId: z.number().nullable(),
+  categoryId: z.number(),
 })
 
 export type CreateTask = z.infer<typeof createTaskSchema>
