@@ -18,10 +18,6 @@ const state = reactive<CreateTask>({
 
 const open = ref(false)
 
-defineShortcuts({
-  o: () => open.value = !open.value,
-})
-
 const onSubmit = async (event: FormSubmitEvent<CreateTask>) => {
   try {
     await createTask(event.data)

@@ -12,10 +12,6 @@ const state = reactive<CreateCategory>({
 
 const open = ref(false)
 
-defineShortcuts({
-  o: () => open.value = !open.value,
-})
-
 const onSubmit = async (event: FormSubmitEvent<CreateCategory>) => {
   try {
     await createCategory(event.data)

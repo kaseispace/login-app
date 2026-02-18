@@ -9,10 +9,6 @@ const props = defineProps<{
 
 const open = ref(false)
 
-defineShortcuts({
-  o: () => open.value = !open.value,
-})
-
 const { refresh, deleteCategory } = useCategories()
 const { showSuccess, showWarning, showError } = useAppToast()
 
