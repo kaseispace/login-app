@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ButtonProps } from '@nuxt/ui'
 
+const config = useRuntimeConfig()
+
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 
@@ -12,7 +14,7 @@ const providers = ref<ButtonProps[]>([
       await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'http://localhost:3000/confirm',
+          redirectTo: config.public.redirectUrl,
         },
       })
     },
