@@ -57,10 +57,10 @@ const items: DropdownMenuItem[][] = [
   <UDropdownMenu
     :items="items"
     :content="{ align: 'end', side: 'bottom' }"
-    :ui="{ content: 'w-auto min-w-0' }"
+    :ui="{ content: 'w-auto min-w-0', item: 'cursor-pointer' }"
   >
     <UButton
-      class="rounded-full"
+      class="rounded-full cursor-pointer"
       color="neutral"
       variant="ghost"
       icon="i-lucide-ellipsis-vertical"
