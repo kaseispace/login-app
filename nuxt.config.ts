@@ -6,6 +6,11 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxtjs/supabase'],
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      redirectUrl: '',
+    },
+  },
   alias: {
     '#schemas': fileURLToPath(new URL('./schemas', import.meta.url)),
   },
