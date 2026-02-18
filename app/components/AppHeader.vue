@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui'
+
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 
@@ -32,28 +34,44 @@ const logout = async () => {
   await client.auth.signOut()
   navigateTo('/login')
 }
+
+const items = ref<DropdownMenuItem[]>([
+  {
+    label: 'ログアウト',
+    icon: 'i-lucide-log-out',
+    onSelect: () => logout(),
+  },
+])
 </script>
 
 <template>
   <UHeader :toggle="false">
+    <template #title>
+      Todo
+    </template>
+
     <template #right>
       <CategoryAddModal v-if="user" />
 
-      <UColorModeButton variant="link" />
+      <UColorModeButton :ui="{ base: 'rounded-full', leadingIcon: 'cursor-pointer' }" variant="ghost" />
 
-      <UAvatar
+      <UDropdownMenu
         v-if="user"
-        :src="avatarSrc"
-      />
-
-      <UButton
-        v-if="user"
-        variant="link"
-        color="primary"
-        @click="logout"
+        class="cursor-pointer"
+        :items="items"
+        :content="{
+          align: 'end',
+          side: 'bottom',
+        }"
+        :ui="{ content: 'w-auto min-w-0', item: 'cursor-pointer' }"
       >
-        Logout
-      </UButton>
+        <UButton
+          class="rounded-full"
+          color="neutral"
+          variant="ghost"
+          :avatar="{ src: avatarSrc, size: 'md' }"
+        />
+      </UDropdownMenu>
     </template>
   </UHeader>
 </template>
