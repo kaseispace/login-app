@@ -51,6 +51,10 @@ const onSubmit = async (event: FormSubmitEvent<CreateCategory>) => {
     :open="open"
     title="カテゴリを編集"
     description="カテゴリ名を入力してください。"
+    :close="{
+      variant: 'ghost',
+      class: 'rounded-full cursor-pointer',
+    }"
     @update:open="emit('update:open', $event)"
   >
     <template #body>
@@ -60,7 +64,7 @@ const onSubmit = async (event: FormSubmitEvent<CreateCategory>) => {
         </UFormField>
 
         <div class="flex justify-end mt-3">
-          <UButton type="submit" color="secondary">
+          <UButton class="cursor-pointer" type="submit" color="secondary">
             編集
           </UButton>
         </div>
