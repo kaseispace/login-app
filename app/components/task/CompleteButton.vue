@@ -34,7 +34,7 @@ const deleteTaskById = async (id: number) => {
   <UButton
     icon="i-lucide-x"
     color="error"
-    class="rounded-full"
+    class="rounded-full cursor-pointer"
     variant="soft"
     size="xs"
     @click="deleteTaskById(id)"
