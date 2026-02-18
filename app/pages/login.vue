@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { ButtonProps } from '@nuxt/ui'
 
-const config = useRuntimeConfig()
-
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
+
+const config = useRuntimeConfig()
 
 const providers = ref<ButtonProps[]>([
   {
