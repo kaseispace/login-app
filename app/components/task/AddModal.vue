@@ -45,11 +45,19 @@ const onSubmit = async (event: FormSubmitEvent<CreateTask>) => {
 </script>
 
 <template>
-  <UModal v-model:open="open" title="タスクを追加" description="タスク名を入力してください。">
+  <UModal
+    v-model:open="open"
+    title="タスクを追加"
+    description="タスク名を入力してください。"
+    :close="{
+      variant: 'ghost',
+      class: 'rounded-full cursor-pointer',
+    }"
+  >
     <UButton
       icon="i-lucide-plus"
       color="secondary"
-      class="rounded-full"
+      class="rounded-full cursor-pointer"
       variant="subtle"
     />
 
@@ -60,7 +68,7 @@ const onSubmit = async (event: FormSubmitEvent<CreateTask>) => {
         </UFormField>
 
         <div class="flex justify-end mt-3">
-          <UButton type="submit" color="secondary">
+          <UButton class="cursor-pointer" type="submit" color="secondary">
             追加
           </UButton>
         </div>
