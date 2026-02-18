@@ -3,7 +3,7 @@ import type { CategoryWithTasks, CreateCategory } from '#schemas/index'
 export const useCategories = () => {
   const { data: categoryList, pending, error, refresh } = useFetch<CategoryWithTasks[]>('/api/categories')
 
-  const createCategory = async (input: CreateCategory): Promise<CreateCategory> => {
+  const createCategory: (input: CreateCategory) => Promise<CreateCategory> = async (input) => {
     try {
       return await $fetch<CreateCategory>('/api/categories', {
         method: 'POST',
