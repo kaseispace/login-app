@@ -12,5 +12,7 @@ watch(user, async () => {
 </script>
 
 <template>
-  <div>Waiting for login...</div>
+  <UContainer class="h-[calc(100vh-var(--ui-header-height))] flex items-center justify-center px-4">
+    <div>Waiting for login...</div>
+  </UContainer>
 </template>
