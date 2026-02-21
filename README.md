@@ -38,6 +38,12 @@ Nuxt4を使ったフルスタック構成で、CRUD機能に加えてGoogleロ�
 
 - Zod
 
+## 🏗 Architecture
+
+以下は本アプリの簡単な構成図です。
+
+![インフラ構成図](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3954066/79aea572-2cda-4bd8-b5df-7e6e893a70bc.png)
+
 ## ✨ Implementation Notes
 
 - **Nuxt 4 の Server API** を利用してフロントエンドとバックエンドを同一プロジェクト内で構築し、
